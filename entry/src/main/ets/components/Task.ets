@@ -1,4 +1,3 @@
-
 @Component
 export struct Task {
   @Prop taskTitle: string
@@ -6,10 +5,6 @@ export struct Task {
   @State isDone: boolean = false
 
   build() {
-    if (this.ifDel) {
-      Row() {
-      }
-    } else
     // 实现一个简单的任务, 直接是一个Row即可
     Row() {
       Text(this.taskTitle)
@@ -26,6 +21,7 @@ export struct Task {
           this.isDone = !this.isDone
         })
     }
+    .visibility(this.ifDel ? Visibility.None : Visibility.Visible)
     .margin({ bottom: 5 })
     .padding({ left: 10, right: 10 })
     .backgroundColor("#f2f2f2")
